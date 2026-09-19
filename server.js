@@ -10,7 +10,6 @@ const cookieParser = require("cookie-parser");
 const connectDB = require("./config/db");
 const productRoutes = require("./routes/productRoutes");
 const checkoutRoutes = require("./routes/checkoutRoutes");
-const preOrderRoutes = require("./routes/preOrderRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 
 const app = express();
@@ -60,7 +59,8 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 app.use("/api/products", (req, res, next) => {
   if (req.method === "GET") {
-    res.set("Cache-Control", "public, max-age=60, s-maxage=60, stale-while-revalidate=300");
+    // Aggressive caching for product lists (2 minutes CDN, 5 minutes stale)
+    res.set("Cache-Control", "public, max-age=120, s-maxage=120, stale-while-revalidate=300");
   }
   next();
 }, productRoutes);
@@ -68,6 +68,7 @@ app.use("/api/products", (req, res, next) => {
 // Cache-Control for public read-only admin endpoints
 app.use("/api/admin/company", (req, res, next) => {
   if (req.method === "GET") {
+    // Long cache for company data (5 minutes CDN, 1 hour stale)
     res.set("Cache-Control", "public, max-age=300, s-maxage=300, stale-while-revalidate=3600");
   }
   next();
@@ -75,6 +76,7 @@ app.use("/api/admin/company", (req, res, next) => {
 
 app.use("/api/admin/sub-categories/home-settings", (req, res, next) => {
   if (req.method === "GET") {
+    // Cache home settings (5 minutes CDN, 1 hour stale)
     res.set("Cache-Control", "public, max-age=300, s-maxage=300, stale-while-revalidate=3600");
   }
   next();
@@ -82,13 +84,29 @@ app.use("/api/admin/sub-categories/home-settings", (req, res, next) => {
 
 app.use("/api/admin/sub-categories/max", (req, res, next) => {
   if (req.method === "GET") {
+    // Cache max settings (5 minutes CDN, 1 hour stale)
     res.set("Cache-Control", "public, max-age=300, s-maxage=300, stale-while-revalidate=3600");
   }
   next();
 });
 
+app.use("/api/admin/category-banners-bulk", (req, res, next) => {
+  if (req.method === "GET") {
+    // Cache banners (2 minutes CDN, 10 minutes stale)
+    res.set("Cache-Control", "public, max-age=120, s-maxage=120, stale-while-revalidate=600");
+  }
+  next();
+});
+
+app.use("/api/admin/reviews", (req, res, next) => {
+  if (req.method === "GET") {
+    // Cache reviews (1 hour CDN, 6 hours stale)
+    res.set("Cache-Control", "public, max-age=3600, s-maxage=3600, stale-while-revalidate=21600");
+  }
+  next();
+});
+
 app.use("/api/checkout", checkoutRoutes);
-app.use("/api/pre-orders", preOrderRoutes);
 app.use("/api/admin", adminRoutes);
 
 const PORT = process.env.PORT || 5000;

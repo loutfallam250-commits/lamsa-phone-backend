@@ -6,8 +6,8 @@ function escapeRegex(str) {
 
 // Shared cache (per worker, but TTL prevents stale data)
 const cache = new Map();
-const CACHE_TTL = 5 * 60 * 1000;
-const SEARCH_TTL = 2 * 60 * 1000;
+const CACHE_TTL = 2 * 60 * 1000; // Reduced to 2 minutes for more frequent updates
+const SEARCH_TTL = 60 * 1000; // 1 minute for search
 
 function getCached(key) {
   const entry = cache.get(key);
@@ -16,13 +16,13 @@ function getCached(key) {
   return entry.data;
 }
 
-function setCached(key, data) {
-  if (cache.size >= 100) {
+function setCached(key, data, ttl = CACHE_TTL) {
+  if (cache.size >= 150) {
     // LRU-style: delete oldest entry instead of clearing all
     const firstKey = cache.keys().next().value;
     cache.delete(firstKey);
   }
-  cache.set(key, { data, ts: Date.now() });
+  cache.set(key, { data, ts: Date.now(), ttl });
 }
 
 exports.invalidateCache = () => cache.clear();
@@ -45,7 +45,7 @@ function sanitizeFields(fields) {
     .join(" ");
 }
 
-// [FIX C2] Strip __v from any product object after lean()
+// Strip __v from any product object after lean()
 function stripMeta(p) {
   if (p && typeof p === "object") delete p.__v;
   return p;
@@ -60,10 +60,18 @@ function normalizeArabic(str) {
     .replace(/ئ/g, "ي");
 }
 
+// Add discountPercent if missing (handle virtual fields with lean())
+function enrichProduct(p) {
+  if (p.discountPercent == null && p.salePrice && p.originalPrice > p.salePrice) {
+    p.discountPercent = Math.round(((p.originalPrice - p.salePrice) / p.originalPrice) * 100);
+  }
+  return stripMeta(p);
+}
+
 exports.getProducts = async (req, res) => {
   try {
     const { q, fields, page, limit, brand, category } = req.query;
-    // [FIX C1] Sanitize — reject any non-string (object) query param to block NoSQL injection
+    // Sanitize — reject any non-string (object) query param to block NoSQL injection
     const safeBrand = brand && typeof brand === "string" && !brand.includes("$") ? brand : undefined;
     const safeCategory = category && typeof category === "string" && !category.includes("$") ? category : undefined;
     const selectFields = sanitizeFields(fields);
@@ -79,6 +87,7 @@ exports.getProducts = async (req, res) => {
       const searchCacheKey = `search:${normalized}:${safeBrand || ""}:${safeCategory || ""}:${selectFields}:${pageNum}:${limitNum}`;
       const cachedSearch = getCached(searchCacheKey);
       if (cachedSearch) return res.json(cachedSearch);
+      
       const searchRegex = { $regex: escapeRegex(normalized), $options: "i" };
       const rawProducts = await Product.find({
         ...filter,
@@ -88,15 +97,14 @@ exports.getProducts = async (req, res) => {
           { subCategory: searchRegex },
           { brand: searchRegex },
         ],
-      }).select(selectFields).limit(limitNum).skip((pageNum - 1) * limitNum).lean({ virtuals: true });
-      const products = rawProducts.map((p) => {
-        if (p.discountPercent == null && p.salePrice && p.originalPrice > p.salePrice) {
-          p.discountPercent = Math.round(((p.originalPrice - p.salePrice) / p.originalPrice) * 100);
-        }
-        return stripMeta(p);
-      });
-      setCached(searchCacheKey, products);
-      cache.get(searchCacheKey).ts -= CACHE_TTL - SEARCH_TTL;
+      })
+      .select(selectFields || "-__v")
+      .limit(limitNum)
+      .skip((pageNum - 1) * limitNum)
+      .lean({ virtuals: false }); // Disable virtuals to reduce overhead
+      
+      const products = rawProducts.map(enrichProduct);
+      setCached(searchCacheKey, products, SEARCH_TTL);
       return res.json(products);
     }
 
@@ -107,19 +115,25 @@ exports.getProducts = async (req, res) => {
     const cached = getCached(cacheKey);
     if (cached) return res.json(cached);
 
-    const query = Product.find(filter).select(selectFields).sort({ createdAt: -1 }).skip((pageNum - 1) * limitNum).limit(limitNum).lean({ virtuals: true });
-    const [rawProducts, total] = await Promise.all([query, Product.countDocuments(filter)]);
-    // Ensure discountPercent is always present even if virtual didn't attach
-    const products = rawProducts.map((p) => {
-      if (p.discountPercent == null && p.salePrice && p.originalPrice > p.salePrice) {
-        p.discountPercent = Math.round(((p.originalPrice - p.salePrice) / p.originalPrice) * 100);
-      }
-      return stripMeta(p);
-    });
+    // Use parallel queries to reduce time
+    const query = Product.find(filter)
+      .select(selectFields || "-__v")
+      .sort({ createdAt: -1 })
+      .skip((pageNum - 1) * limitNum)
+      .limit(limitNum)
+      .lean({ virtuals: false });
+      
+    const [rawProducts, total] = await Promise.all([
+      query,
+      Product.countDocuments(filter)
+    ]);
+    
+    const products = rawProducts.map(enrichProduct);
     const result = { products, total, page: pageNum, pages: Math.ceil(total / limitNum) };
     setCached(cacheKey, result);
     return res.json(result);
   } catch (err) {
+    console.error("getProducts error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -130,15 +144,17 @@ exports.getProduct = async (req, res) => {
     const cached = getCached(cacheKey);
     if (cached) return res.json(cached);
 
-    const product = await Product.findById(req.params.id).lean({ virtuals: true });
+    const product = await Product.findById(req.params.id)
+      .select("-__v")
+      .lean({ virtuals: false });
+      
     if (!product) return res.status(404).json({ message: "Product not found" });
-    if (product.discountPercent == null && product.salePrice && product.originalPrice > product.salePrice) {
-      product.discountPercent = Math.round(((product.originalPrice - product.salePrice) / product.originalPrice) * 100);
-    }
-    stripMeta(product);
+    
+    enrichProduct(product);
     setCached(cacheKey, product);
     res.json(product);
   } catch (err) {
+    console.error("getProduct error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -163,6 +179,7 @@ exports.createProduct = async (req, res) => {
     exports.invalidateCache();
     res.status(201).json(product);
   } catch (err) {
+    console.error("createProduct error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -174,6 +191,7 @@ exports.updateProduct = async (req, res) => {
     exports.invalidateCache();
     res.json(product);
   } catch (err) {
+    console.error("updateProduct error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -185,6 +203,7 @@ exports.deleteProduct = async (req, res) => {
     exports.invalidateCache();
     res.json({ message: "Product deleted" });
   } catch (err) {
+    console.error("deleteProduct error:", err);
     res.status(500).json({ message: "Server error" });
   }
 };

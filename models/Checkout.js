@@ -35,7 +35,7 @@ const checkoutSchema = new mongoose.Schema(
 checkoutSchema.index({ createdAt: -1 });
 checkoutSchema.index({ customer: 1 });
 checkoutSchema.index({ whatsapp: 1 });
-checkoutSchema.index({ orderId: 1 }); // [PERF] Add index for orderId searches
+// checkoutSchema.index({ orderId: 1 }); // REMOVED - orderId already has unique: true which creates index
 checkoutSchema.index({ status: 1, createdAt: -1 });
 
 module.exports = mongoose.model("Checkout", checkoutSchema);

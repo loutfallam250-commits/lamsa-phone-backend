@@ -31,8 +31,8 @@ const adminSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// [PERF] Add index for email lookups (unique already creates index, but explicit for clarity)
-adminSchema.index({ email: 1 });
+// Note: email index already created by unique: true, no need for duplicate
+// adminSchema.index({ email: 1 }); // REMOVED - causes duplicate index warning
 
 // Hash password before save
 adminSchema.pre("save", async function () {
