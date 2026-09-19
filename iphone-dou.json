@@ -1,0 +1,528 @@
+{
+    "name": "أبل آيفون Duo، 5G، 256 جيجابايت، برجاندي",
+    "brief": "تصميم مبتكر، وتجربة مختلفة تمامًا مع آيفون Duo الجديد.",
+    "description": "اكتشف تجربة جديدة مع آيفون Duo، المصمم ليجمع بين التصميم العصري والأداء القوي في جهاز واحد. يأتي بتصميم مبتكر يمنحك تجربة استخدام مميزة، مع شريحة A20 Pro لأداء سريع وسلس، وكاميرات متطورة لالتقاط صور وفيديوهات مذهلة في مختلف الظروف. سعة 256 جيجابايت تمنحك مساحة واسعة لتخزين صورك وملفاتك وتطبيقاتك، لتكون مستعدًا لكل لحظة.",
+    "originalPrice": 8679,
+    "salePrice": 8679,
+    "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185735/f2f7701d-2e46-442e-a831-b96e2dead50f_b4wmc3.webp",
+    "images": [
+        "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185735/f2f7701d-2e46-442e-a831-b96e2dead50f_b4wmc3.webp",
+        "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185737/a6da6f39-3e85-4d55-8202-3ae9c8c3c535_hz6sxt.webp",
+        "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185731/3975db60-44df-4f73-b38a-daba6ecd227c_g1dd1q.webp",
+        "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185847/d65eeb68-94eb-480a-a5f6-a186c5fd2e0c_thueve.webp"
+    ],
+    "variants": [
+        {
+            "name": "أبل آيفون Duo، 5G، أبيض نجمي",
+            "color": "Star White",
+            "colorCode": "#F5F5F0",
+            "defaultStorage": "256GB",
+            "images": [
+                "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185735/f2f7701d-2e46-442e-a831-b96e2dead50f_b4wmc3.webp",
+                "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185737/a6da6f39-3e85-4d55-8202-3ae9c8c3c535_hz6sxt.webp",
+                "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185731/3975db60-44df-4f73-b38a-daba6ecd227c_g1dd1q.webp",
+                "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185847/d65eeb68-94eb-480a-a5f6-a186c5fd2e0c_thueve.webp"
+            ],
+            "storageOptions": [
+                {
+                    "storage": "256GB",
+                    "originalPrice": 8679,
+                    "salePrice": 8679
+                },
+                {
+                    "storage": "512GB",
+                    "originalPrice": 9547,
+                    "salePrice": 9547
+                },
+                {
+                    "storage": "1TB",
+                    "originalPrice": 11283,
+                    "salePrice": 11283
+                },
+                {
+                    "storage": "2TB",
+                    "originalPrice": 13888,
+                    "salePrice": 13888
+                }
+            ]
+        },
+        {
+            "name": "أبل آيفون Duo، 5G، سماء ليلية",
+            "color": "Night Sky",
+            "colorCode": "#1D1D1F",
+            "defaultStorage": "256GB",
+            "images": [
+                "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185730/89ce8eaa-cef5-4e84-9a0d-ae0cada86e24_hadz0a.webp",
+                "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185742/3c1046ef-ad18-4ea7-ab44-2558ab8c175c_vtxpuh.webp",
+                "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185756/3ebb9e8b-81f1-450b-9e47-226df1f1a5ef_xmbwy1.webp",
+                "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185847/d65eeb68-94eb-480a-a5f6-a186c5fd2e0c_thueve.webp"
+            ],
+            "storageOptions": [
+                {
+                    "storage": "256GB",
+                    "originalPrice": 8679,
+                    "salePrice": 8679
+                },
+                {
+                    "storage": "512GB",
+                    "originalPrice": 9547,
+                    "salePrice": 9547
+                },
+                {
+                    "storage": "1TB",
+                    "originalPrice": 11283,
+                    "salePrice": 11283
+                },
+                {
+                    "storage": "2TB",
+                    "originalPrice": 13888,
+                    "salePrice": 13888
+                }
+            ]
+        }
+    ],
+    "specGroups": [
+        {
+            "group": "الشاشة",
+            "items": [
+                {
+                    "key": "نوع الشاشة",
+                    "value": "Super Retina XDR OLED"
+                },
+                {
+                    "key": "مقاس الشاشة الداخلية",
+                    "value": "7.6 بوصة"
+                },
+                {
+                    "key": "تصميم الشاشة",
+                    "value": "شاشة داخلية واسعة قابلة للطي مع شاشة خارجية"
+                },
+                {
+                    "key": "طبقات الشاشة الداخلية",
+                    "value": "10 طبقات فائقة النحافة"
+                },
+                {
+                    "key": "المعالجة",
+                    "value": "طبقة نهائية بتكنولوجيا النانو لتقليل الوهج"
+                },
+                {
+                    "key": "زاوية المشاهدة",
+                    "value": "عناصر OLED بزاوية واسعة"
+                },
+                {
+                    "key": "السطوع",
+                    "value": "3000 شمعة/المتر المربع"
+                },
+                {
+                    "key": "حجم الشاشة",
+                    "value": "أكبر بنسبة 50% من شاشة iPhone 18 Pro Max"
+                }
+            ]
+        },
+        {
+            "group": "التصميم والاستخدام",
+            "items": [
+                {
+                    "key": "التصميم",
+                    "value": "تصميم مرن متعدد الوضعيات"
+                },
+                {
+                    "key": "نظام الاستخدام",
+                    "value": "نظام iOS 27 مُعاد تصوره"
+                },
+                {
+                    "key": "الوضعيات",
+                    "value": "الشاشة الخارجية والداخلية مع زوايا عرض متعددة"
+                },
+                {
+                    "key": "نمط الاستعداد",
+                    "value": "عرض الساعة والصور والطقس والتقويم والأدوات"
+                },
+                {
+                    "key": "وضعية الوقوف",
+                    "value": "مشاهدة المحتوى وتصوير الفيديو واستقبال المكالمات دون استخدام اليدين"
+                }
+            ]
+        },
+        {
+            "group": "الأداء",
+            "items": [
+                {
+                    "key": "المعالج",
+                    "value": "Apple A20 Pro"
+                },
+                {
+                    "key": "المحرك العصبي",
+                    "value": "محرك عصبي مزدوج بـ 16 نواة"
+                },
+                {
+                    "key": "أداء وحدة CPU",
+                    "value": "أسرع حتى 20% مقارنة بشريحة A19 Pro"
+                },
+                {
+                    "key": "النطاق الترددي للذاكرة",
+                    "value": "زيادة تصل إلى 50% مقارنة بشريحة A19 Pro"
+                },
+                {
+                    "key": "نظام إدارة الحرارة",
+                    "value": "نظام متطور مع حجرة بخار"
+                },
+                {
+                    "key": "المودم",
+                    "value": "C2"
+                }
+            ]
+        },
+        {
+            "group": "الكاميرا",
+            "items": [
+                {
+                    "key": "الكاميرا الرئيسية",
+                    "value": "48MP Fusion"
+                },
+                {
+                    "key": "الكاميرا واسعة للغاية",
+                    "value": "48MP Fusion"
+                },
+                {
+                    "key": "الكاميرا الأمامية",
+                    "value": "12MP Center Stage"
+                },
+                {
+                    "key": "الكاميرا خلف الشاشة",
+                    "value": "كاميرا مدمجة خلف الشاشة"
+                },
+                {
+                    "key": "الزووم",
+                    "value": "جودة بصرية 2x"
+                },
+                {
+                    "key": "التصوير",
+                    "value": "صور بدقة 48MP وفيديو 4K بمعدل 120 إطارًا في الثانية"
+                },
+                {
+                    "key": "ميزات التصوير",
+                    "value": "Smart Take وDuo Preview وإشارة الصغار"
+                },
+                {
+                    "key": "ميزات الفيديو",
+                    "value": "Dolby Vision HDR وتتبع التركيز الذكي والنمط السينمائي"
+                }
+            ]
+        },
+        {
+            "group": "البطارية والشحن",
+            "items": [
+                {
+                    "key": "نظام البطارية",
+                    "value": "نظام بطارية مزدوجة"
+                },
+                {
+                    "key": "تشغيل الفيديو بالشاشة الداخلية",
+                    "value": "حتى 31 ساعة"
+                },
+                {
+                    "key": "تشغيل الفيديو بالشاشة الخارجية",
+                    "value": "حتى 44 ساعة"
+                },
+                {
+                    "key": "الشحن السريع",
+                    "value": "حتى 50% خلال 20 دقيقة تقريبًا"
+                },
+                {
+                    "key": "المودم",
+                    "value": "C2 بكفاءة استثنائية في استهلاك الطاقة"
+                }
+            ]
+        },
+        {
+            "group": "الفيديو",
+            "items": [
+                {
+                    "key": "الدقة",
+                    "value": "4K Dolby Vision HDR"
+                },
+                {
+                    "key": "معدل الإطارات",
+                    "value": "حتى 120 إطارًا في الثانية"
+                },
+                {
+                    "key": "التصوير الليلي",
+                    "value": "تصوير فيديو 1080p في الإضاءة الخافتة"
+                },
+                {
+                    "key": "النمط السينمائي",
+                    "value": "تأثير عمق المجال مع إمكانية التعديل بعد التصوير"
+                },
+                {
+                    "key": "التقاط مزدوج",
+                    "value": "تصوير بالكاميرات الأمامية والخلفية في الوقت نفسه"
+                }
+            ]
+        }
+    ],
+    "sections": [
+        {
+            "type": "design",
+            "title": "نظرة عن قرب",
+            "content": {
+                "features": [
+                    {
+                        "id": "colors",
+                        "label": "الألوان",
+                        "title": "اختر من بين لونين مميزين. iPhone Duo معروض بلون أبيض نجمي",
+                        "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185735/f2f7701d-2e46-442e-a831-b96e2dead50f_b4wmc3.webp",
+                        "colors": [
+                            {
+                                "name": "Star White",
+                                "colorCode": "#F5F5F0",
+                                "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185735/f2f7701d-2e46-442e-a831-b96e2dead50f_b4wmc3.webp",
+                                "title": "اختر من بين لونين مميزين. iPhone Duo معروض بلون أبيض نجمي"
+                            },
+                            {
+                                "name": "Night Sky",
+                                "colorCode": "#1D1D1F",
+                                "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185730/89ce8eaa-cef5-4e84-9a0d-ae0cada86e24_hadz0a.webp",
+                                "title": "اختر من بين لونين مميزين. iPhone Duo معروض بلون سماء ليلية"
+                            }
+                        ]
+                    },
+                    {
+                        "id": "frame",
+                        "label": "تصميم قابل للطيّ",
+                        "title": "يمنحك تجارب مشاهدة استثنائية في تصميم قابل للطيّ يسع في جيبك.",
+                        "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186853/c9d655f0-85db-4e68-86de-d89516d78e9e_arejmz.webp"
+                    },
+                    {
+                        "id": "steam",
+                        "label": "الوضعية الأفقية",
+                        "title": "شاشة واسعة لتجارب ترفيهية تغمرك بروعتها، مع إمكانية استخدام تطبيقين جنباً إلى جنب في نمط العرض المتقابل لإتمام مهام متعددة في وقت واحد.",
+                        "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186851/a2dfd10c-1bb7-4549-97c4-e082ff136426_nzgfnt.webp"
+                    },
+                    {
+                        "id": "ceramic",
+                        "label": "الوضعية العمودية",
+                        "title": "لوحة مفاتيح أوسع لكتابة سهلة ومريحة. مساحة أكبر للتصفح والتمرير. وإمكانية تثبيت فيديو في الجزء العلوي لمشاهدته أثناء استخدام تطبيق آخر.",
+                        "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186851/a9a84d87-c061-470e-b76c-985c91da2ee7_r9ieet.webp"
+                    },
+                    {
+                        "id": "display",
+                        "label": "مغلق",
+                        "title": "تصميم صغير ومريح في الحمل. ومع انتقال عناصر التحكم الأساسية إلى الجانب، سيسهل عليك الوصول إليها، كما ستحصل على مساحة عمودية أكبر للتطبيقات.",
+                        "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186844/fa950622-2c52-4c7b-ac2f-4935de02529e_gemdyj.webp"
+                    },
+                    {
+                        "id": "camera_control",
+                        "label": "وضعية الجلوس",
+                        "title": "اضبط iPhone Duo في وضعية الجلوس لمشاهدة برنامجك المفضل أو لمتابعة تمرين رياضي بزاوية عرض مثالية، مع سهولة الوصول إلى عناصر التحكم في الجهة السفلية.",
+                        "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186853/93d614c7-99dd-4341-9202-e7920856282c_qa0gss.webp"
+                    },
+                    {
+                        "id": "action",
+                        "label": "وضعية الوقوف",
+                        "title": "اعرض الصور والأدوات والساعة والمزيد في نمط الاستعداد. وشاهد الأفلام والبرامج بزاوية عرض قابلة للتعديل على الشاشة الخارجية.",
+                        "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186863/8ae1b9b5-bc8d-4d6b-bd07-e0e73b3d5246_xlbr4f.webp"
+                    },
+                    {
+                        "id": "durability",
+                        "label": "المتانة",
+                        "title": "إطار وغطاء مفصل من التيتانيوم من الدرجة 5. طبقة مقاومة للخدوش على الشاشة الداخلية. درع السيراميك في الجهتين الأمامية والخلفية. ومقاومة الماء والغبار ضمن تصنيف IP68.",
+                        "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186865/6d1d8190-be5f-48e0-b028-5ac2c5c3f15b_yew8ly.webp"
+                    }
+                ]
+            },
+            "media": [],
+            "sortOrder": 1,
+            "isActive": true
+        },
+        {
+            "type": "camera",
+            "title": "نظام كاميرا متطور",
+            "subtitle": "ميزات جديدة للكاميرا المفضلة، تُرفع لها العشرة.",
+            "content": {
+                "hero": {
+                    "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789185735/f2f7701d-2e46-442e-a831-b96e2dead50f_b4wmc3.webp",
+                    "stats": [
+                        {
+                            "value": "48MP",
+                            "label": "كاميرا Fusion واسعة للغاية"
+                        },
+                        {
+                            "value": "48MP",
+                            "label": "كاميرا Fusion رئيسية"
+                        },
+                        {
+                            "value": "12MP",
+                            "label": "كاميرا Center Stage أمامية"
+                        }
+                    ],
+                    "description": "يمنح iPhone Duo نظام الكاميرا الذي تحبه ميزات جديدة رائعة. فمع ميزتي Duo Preview وإشارة الصغار، يظهر الجميع في أفضل صورة. استمتع باللحظة بدلاً من الانشغال في تصويرها مع ميزة الالتقاط الذكي. والتقط صور 48MP مذهلة وفيديوهات 4K بمعدل 120 إطاراً في الثانية. الكاميرا، عشرة على عشرة."
+                },
+
+
+
+             "zoomLevels": [
+  {
+    "label": "ميزة الالتقاط الذكي",
+    "title": "يستطيع iPhone Duo استشعار لحظة استعداد الجميع، ثم يلتقط الصور. وهكذا لن تضطر إلى التسابق مع المؤقت لتظهر في اللقطة.",
+    "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186843/016e666d-a7fd-4c72-bd11-bf405c23f65e_wfcpay.webp"
+  },
+  {
+    "label": "ميزة Duo Preview",
+    "title": "الشاشة الخارجية تمكّن مَن تصوّرهم من رؤية لقطتهم مباشرة واتخاذ الوضعية الملائمة والمكان المناسب داخل إطار الصورة.",
+    "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186828/1bc4d400-1b31-4012-9a1f-e5b18f8d7c4b_ourwxs.webp"
+  },
+  {
+    "label": "ميزة إشارة الصغار",
+    "title": "أصبح إقناع الأطفال بالنظر إلى الكاميرا أسهل بكثير، وذلك بفضل صور متحركة مرحة على الشاشة الخارجية تجذب أنظارهم نحو عدسة الكاميرا بشكل طبيعي.",
+    "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186837/2ed97ecb-19c7-47d9-8791-0b43dfa6660f_umo5py.webp"
+  }
+],
+
+
+
+             "proPhotos": {
+  "title": "تصوير احترافي بإمكانيات استثنائية.",
+  "items": [
+    {
+      "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186870/f0ca7b7e-5aac-4a09-9890-77bcfa2dcb52_ydjppe.webp",
+      "label": "الأنماط الفوتوغرافية 3",
+      "description": "إلى جانب الدرجة واللون، يمكنك الآن تخصيص الملمس والخشونة لتنعيم تفاصيل البشرة أو الحصول على إطلالة الأفلام الفنية، مع الحفاظ على طابع صورتك الأصلية."
+    },
+    {
+      "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186846/c6aabdd7-b885-4d3f-aaf7-977d8cc9ad93_c8u6ab.webp",
+      "label": "تعديل ذكي للصور",
+      "description": "أعد تأطير صورك بعد التقاطها مع ميزة إعادة التأطير المكاني. وسّع آفاق لقطاتك مع أداة التوسيع. واحذف العناصر الأكبر حجماً باستخدام أداة التنظيف المعززة. كل هذا ممكن مع Apple Intelligence."
+    },
+    {
+      "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186826/6330e778-b503-44a5-8b38-1de8b5189a83_pau1mb.webp",
+      "label": "جودة صور عالية",
+      "description": "تُستخدم إطارات 48MP في جميع مراحل التصوير بكاميرا Fusion الرئيسية لصور مذهلة بوضوحها وتفاصيلها."
+    },
+    {
+      "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186825/804a17f7-df1a-4409-b068-fcb4f5d6253e_k4mkhs.webp",
+      "label": "فيديوهات في الإضاءة الخافتة",
+      "description": "التقط فيديوهات مذهلة في ظروف الإضاءة الخافتة مع إعداد 1080p الأساسي."
+    },
+    {
+      "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186860/78251f6d-6d3c-49f6-a8de-bb109a3a7e9c_qmf3vv.webp",
+      "label": "النمط السينمائي",
+      "description": "استخدم تأثير عمق المجال الذي يحافظ على وضوح تفاصيل الصورة مع منحها تأثيراً ضبابياً جميلاً في المقدمة والخلفية. ويمكنك أيضاً إضافة هذا التأثير وتعديله حتى بعد تصوير الفيديو."
+    },
+   
+    {
+      "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186825/82683865-8e48-45e5-8bc8-037d0868c03a_eu1hok.webp",
+      "label": "تتبّع التركيز الذكي",
+      "description": "تتيح لك التكنولوجيا الذكية على الجهاز إبقاء من تصوّره ضمن إطار التركيز أثناء تحرّكه داخل المشهد. ويبقى التركيز ثابتاً حتى لو خرج الشخص من الإطار ثم عاد إليه مجدداً."
+    },
+    {
+      "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186891/3e2d2b7a-e29d-47d5-94be-9164b7a75400_dozabl.webp",
+      "label": "زووم بجودة بصرية 2x",
+      "description": "أضف أبعاداً أوسع إلى لقطاتك من دون المساومة على التفاصيل."
+    },
+    {
+      "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186882/526e3ab6-fec3-444a-913b-4dc9cdd66a41_o25zib.webp",
+      "label": "نمط في الوسط",
+      "description": "تفنّن في تأطير صور السيلفي بطرق أكثر مرونة. انتقل من الوضع الرأسي إلى الأفقي من دون تحريك iPhone. وأضف تلقائياً المزيد من الأشخاص إلى إطار الصورة."
+    },
+    {
+      "image": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186880/c2e84a1f-a8cf-4575-9793-6b657db40c7f_j70rmk.webp",
+      "label": "أدوات قابلة للتخصيص",
+      "description": "استفد من سرعة الوصول إلى عناصر التحكم اليدوية، مثل توازن اللون الأبيض والتركيز."
+    }
+  ]
+}
+            },
+            "media": [],
+            "sortOrder": 2,
+            "isActive": true
+        }
+
+,
+        {
+  "type": "performance",
+  "title": "الأداء",
+  "subtitle": "القوة. بالطول والعرض.",
+  "content": {
+    "description": "شريحة A20 Pro بالمحرك العصبي المزدوج مع 16 نواة مصممة خصيصاً لإتمام مهام الذكاء الاصطناعي الأكثر تعقيداً. والنظام المتطور لإدارة الحرارة مع حجرة بخار يمنح iPhone Duo أداءً احترافياً مثالياً للمهمات المتطلبة وجلسات اللعب الممتعة.",
+    "chips": [
+      {
+        "name": "أداء أسرع",
+        "description": "تصل سرعة أداء وحدة CPU ذات 6 نوى إلى 20% أسرع مقارنة بشريحة A19 Pro، لتشغيل التطبيقات والألعاب والمهام المتطلبة بسلاسة أكبر."
+      },
+      {
+        "name": "نطاق ترددي أعلى للذاكرة",
+        "description": "يوفر iPhone Duo زيادة تصل إلى 50% في النطاق الترددي للذاكرة مقارنة بشريحة A19 Pro، لتعزيز الأداء في المهام المتقدمة."
+      },
+      {
+        "name": "محرك عصبي مزدوج",
+        "description": "تأتي شريحة A20 Pro بمحرك عصبي مزدوج مع 16 نواة مصمم خصيصاً للتعامل مع مهام الذكاء الاصطناعي الأكثر تعقيداً بكفاءة عالية."
+      },
+      {
+        "name": "إدارة حرارة متطورة",
+        "description": "يساعد النظام المتطور لإدارة الحرارة مع حجرة البخار على الحفاظ على أداء مستدام أثناء المهمات المتطلبة وجلسات اللعب الطويلة."
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "url": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789147054/62c2df83-0f67-463c-bef1-745faa4550b6_m7ky0z.webp",
+      "alt": "أداء iPhone Duo",
+      "sortOrder": 0
+    }
+  ],
+  "sortOrder": 3,
+  "isActive": true
+},
+{
+  "type": "battery",
+  "title": "عمر البطارية",
+  "subtitle": "في الازدواج قوة.",
+  "content": {
+    "description": "نظام بطارية مزدوجة لأول مرة في iPhone، مع تصميم داخلي للشريحة الإلكترونية يوفر مساحة فعلية أكبر لسعة البطارية. ومودم C2 يقدم أداءً مميزاً بكفاءة استثنائية. حتى لو أمضيت ساعات وساعات في التصفح والألعاب، يبقى iPhone Duo صامداً طوال اليوم بشحنة واحدة. ويمكنك شحنه لغاية 50 في المئة خلال 20 دقيقة تقريباً مع الشحن السلكي السريع.",
+    "stats": [
+      {
+        "value": "31",
+        "unit": "ساعة",
+        "label": "من تشغيل الفيديو عند استخدام الشاشة الداخلية"
+      },
+      {
+        "value": "44",
+        "unit": "ساعة",
+        "label": "من تشغيل الفيديو عند استخدام الشاشة الخارجية"
+      },
+      {
+        "value": "50%",
+        "unit": "شحن",
+        "label": "خلال 20 دقيقة تقريباً مع الشحن السلكي السريع"
+      }
+    ]
+  },
+  "media": [
+    {
+      "type": "image",
+      "url": "https://res.cloudinary.com/dyqkhcuxe/image/upload/v1789186882/7128d61f-a8c8-4b63-98f0-89790a46489d_tx2lnu.webp",
+      "alt": "عمر بطارية iPhone Duo",
+      "sortOrder": 0
+    }
+  ],
+  "sortOrder": 4,
+  "isActive": true
+}
+
+       
+    ],
+    "freeDelivery": true,
+    "deliveryTime": "24 ساعة",
+    "warrantyYears": 2,
+    "installment": {
+        "available": false,
+        "conditions": []
+    },
+    "taxIncluded": true,
+    "category": "ابل ايفون 18 دو",
+    "subCategory": "هواتف ذكية",
+    "brand": "Apple",
+    "inStock": true
+}
