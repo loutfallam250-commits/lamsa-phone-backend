@@ -116,6 +116,8 @@ productSchema.index({ category: 1, inStock: 1 });
 productSchema.index({ brand: 1, inStock: 1 });
 productSchema.index({ category: 1, brand: 1 });
 productSchema.index({ subCategory: 1 });
+productSchema.index({ storage: 1, color: 1 }); // [NEW] For sorting by storage and color
+productSchema.index({ category: 1, subCategory: 1 }); // [NEW] For combined category filtering
 productSchema.index({ name: "text", category: "text", subCategory: "text", brand: "text" });
 
 productSchema.virtual("discountPercent").get(function () {
