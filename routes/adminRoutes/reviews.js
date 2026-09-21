@@ -4,14 +4,22 @@ const { authMiddleware } = require("./middleware");
 
 const router = express.Router();
 
-// [PERF] Cache for public approved reviews
+// [PERF] Cache for public approved reviews (homepage widget)
 let _reviewsCache = null;
 let _reviewsCacheTs = 0;
 const REVIEWS_CACHE_TTL = 5 * 60 * 1000; // 5 minutes
 
+// [PERF] Cache for admin /reviews/all — invalidated on every mutation so the
+// admin always sees up-to-date data after the first load within the TTL window.
+let _adminReviewsCache = null;
+let _adminReviewsCacheTs = 0;
+const ADMIN_REVIEWS_TTL = 2 * 60 * 1000; // 2 minutes
+
 function invalidateReviewsCache() {
   _reviewsCache = null;
   _reviewsCacheTs = 0;
+  _adminReviewsCache = null;
+  _adminReviewsCacheTs = 0;
 }
 
 // GET /api/admin/reviews (public - approved only)
@@ -37,9 +45,18 @@ router.get("/reviews", async (req, res) => {
 });
 
 // GET /api/admin/reviews/all (admin - all reviews)
+// [PERF] Cached 2 min + .lean() — avoids full Mongoose document hydration on
+// every admin page load. Invalidated on any mutation.
 router.get("/reviews/all", authMiddleware, async (req, res) => {
   try {
-    const reviews = await Review.find().sort({ createdAt: -1 });
+    if (_adminReviewsCache && Date.now() - _adminReviewsCacheTs < ADMIN_REVIEWS_TTL) {
+      return res.json(_adminReviewsCache);
+    }
+    const reviews = await Review.find()
+      .sort({ createdAt: -1 })
+      .lean();
+    _adminReviewsCache = reviews;
+    _adminReviewsCacheTs = Date.now();
     res.json(reviews);
   } catch {
     res.status(500).json({ error: "خطأ في الخادم" });
@@ -81,6 +98,7 @@ router.post("/reviews/admin-add", authMiddleware, async (req, res) => {
 });
 
 // PUT /api/admin/reviews/:id
+// [PERF] Added .lean() — returns plain object, no Mongoose overhead.
 router.put("/reviews/:id", authMiddleware, async (req, res) => {
   try {
     const { name, comment, rating, gender } = req.body;
@@ -88,7 +106,7 @@ router.put("/reviews/:id", authMiddleware, async (req, res) => {
     const review = await Review.findByIdAndUpdate(
       req.params.id,
       { name, comment, rating: rating || 5, gender: gender || "male" },
-      { new: true }
+      { new: true, lean: true }
     );
     if (!review) return res.status(404).json({ error: "التعليق غير موجود" });
     invalidateReviewsCache();
@@ -111,12 +129,16 @@ router.patch("/reviews/:id/approve", authMiddleware, async (req, res) => {
 });
 
 // PATCH /api/admin/reviews/:id/toggle
+// [PERF] Single findByIdAndUpdate instead of findById + save (was 2 DB round-trips).
 router.patch("/reviews/:id/toggle", authMiddleware, async (req, res) => {
   try {
-    const review = await Review.findById(req.params.id);
+    // Use aggregation pipeline update to flip the boolean atomically in one op.
+    const review = await Review.findByIdAndUpdate(
+      req.params.id,
+      [{ $set: { approved: { $not: "$approved" } } }],
+      { new: true, lean: true }
+    );
     if (!review) return res.status(404).json({ error: "التعليق غير موجود" });
-    review.approved = !review.approved;
-    await review.save();
     invalidateReviewsCache();
     res.json({ approved: review.approved });
   } catch {

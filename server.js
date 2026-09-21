@@ -90,10 +90,28 @@ app.use("/api/admin/sub-categories/max", (req, res, next) => {
   next();
 });
 
+// Public banner read endpoints — safe to cache at the CDN/proxy layer
+app.use("/api/admin/banners", (req, res, next) => {
+  if (req.method === "GET") {
+    // 30 s CDN, 5 min stale — admin changes are rare, but we want near-instant
+    // propagation; the admin page bypasses this via credentials:include anyway
+    res.set("Cache-Control", "public, max-age=30, s-maxage=30, stale-while-revalidate=300");
+  }
+  next();
+});
+
 app.use("/api/admin/category-banners-bulk", (req, res, next) => {
   if (req.method === "GET") {
     // Cache banners (2 minutes CDN, 10 minutes stale)
     res.set("Cache-Control", "public, max-age=120, s-maxage=120, stale-while-revalidate=600");
+  }
+  next();
+});
+
+app.use("/api/admin/category-banners", (req, res, next) => {
+  if (req.method === "GET") {
+    // Short cache — admin panel reads, don't cache mutations
+    res.set("Cache-Control", "public, max-age=30, s-maxage=30, stale-while-revalidate=300");
   }
   next();
 });

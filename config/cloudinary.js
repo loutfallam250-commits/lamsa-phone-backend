@@ -1,6 +1,7 @@
 const cloudinary = require("cloudinary").v2;
 const multer = require("multer");
 const { Readable } = require("stream");
+const sharp = require("sharp");
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -18,13 +19,30 @@ function makeFileUpload() {
   return multer({ storage: memoryStorage, limits: { fileSize: 20 * 1024 * 1024 } });
 }
 
-function uploadToCloudinary(buffer, folder, options = {}) {
+/**
+ * Resize + convert to WebP before uploading to Cloudinary.
+ * - Max width: 1600px (banners are never rendered wider than that)
+ * - Quality: 82 — good visual quality, roughly 50–70% smaller than the original
+ * - withoutEnlargement: never upscale a small image
+ * Returns a Buffer ready to pipe to Cloudinary.
+ */
+async function optimizeImage(buffer, { maxWidth = 1600, quality = 82 } = {}) {
+  return sharp(buffer)
+    .resize({ width: maxWidth, withoutEnlargement: true })
+    .webp({ quality })
+    .toBuffer();
+}
+
+async function uploadToCloudinary(buffer, folder, options = {}) {
+  // Optimise the image before sending to Cloudinary
+  const optimized = await optimizeImage(buffer);
+
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
-      { folder, ...options },
+      { folder, format: "webp", ...options },
       (err, result) => (err ? reject(err) : resolve(result))
     );
-    Readable.from(buffer).pipe(stream);
+    Readable.from(optimized).pipe(stream);
   });
 }
 
