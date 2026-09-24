@@ -13,7 +13,7 @@ let _homeSettingsCache = null;
 let _homeSettingsCacheTs = 0;
 let _maxCache = null;
 let _maxCacheTs = 0;
-const SETTINGS_TTL = 5 * 60 * 1000;
+const SETTINGS_TTL = 30 * 1000;
 
 // [PERF] Cache for the sub-categories aggregate used by Add/Edit product forms.
 // These only change when products are added/removed or renamed — invalidated on mutation.
@@ -176,6 +176,8 @@ router.post("/sub-categories", authMiddleware, async (req, res) => {
     const existsSC = await SubCategory.findOne({ name: name.trim() });
     if (existsSC) return res.status(400).json({ error: "التصنيف الفرعي موجود بالفعل" });
     const sc = await SubCategory.create({ name: name.trim() });
+    invalidateSubCatsCache();
+    invalidateSettingsCache();
     res.status(201).json({ name: sc.name, count: 0 });
   } catch {
     res.status(500).json({ error: "خطأ في الخادم" });
@@ -414,6 +416,7 @@ router.patch("/sub-categories/max", authMiddleware, async (req, res) => {
     );
     _maxCache = null;
     _maxCacheTs = 0;
+    invalidateSettingsCache();
     res.json({ max: val });
   } catch {
     res.status(500).json({ error: "خطأ في الخادم" });
