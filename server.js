@@ -76,16 +76,16 @@ app.use("/api/admin/company", (req, res, next) => {
 
 app.use("/api/admin/sub-categories/home-settings", (req, res, next) => {
   if (req.method === "GET") {
-    // Cache home settings (5 minutes CDN, 1 hour stale)
-    res.set("Cache-Control", "public, max-age=300, s-maxage=300, stale-while-revalidate=3600");
+    // Do not cache at CDN level so admin changes propagate immediately
+    res.set("Cache-Control", "no-cache, no-store, must-revalidate");
   }
   next();
 });
 
 app.use("/api/admin/sub-categories/max", (req, res, next) => {
   if (req.method === "GET") {
-    // Cache max settings (5 minutes CDN, 1 hour stale)
-    res.set("Cache-Control", "public, max-age=300, s-maxage=300, stale-while-revalidate=3600");
+    // Do not cache at CDN level so admin changes propagate immediately
+    res.set("Cache-Control", "no-cache, no-store, must-revalidate");
   }
   next();
 });
