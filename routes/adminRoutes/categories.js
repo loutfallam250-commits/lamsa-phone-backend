@@ -288,11 +288,15 @@ router.get("/sub-categories/settings", authMiddleware, async (req, res) => {
 router.patch("/sub-categories/settings/toggle", authMiddleware, async (req, res) => {
   try {
     const { category, subCategory } = req.body;
-    if (!category || !subCategory) return res.status(400).json({ error: "البيانات مطلوبة" });
-    const existing = await SubCategorySettings.findOne({ category, subCategory });
+    // [FIX] Treat category as required — a missing/empty category would create a broken
+    // SubCategorySettings doc that can never be matched to actual products on the homepage.
+    if (!subCategory) return res.status(400).json({ error: "البيانات مطلوبة" });
+    // If category was not sent (old client), fall back to subCategory name as the key.
+    const effectiveCategory = (category && category.trim()) ? category.trim() : subCategory.trim();
+    const existing = await SubCategorySettings.findOne({ category: effectiveCategory, subCategory });
     const newValue = existing ? !existing.showInHome : true;
     const doc = await SubCategorySettings.findOneAndUpdate(
-      { category, subCategory },
+      { category: effectiveCategory, subCategory },
       { $set: { showInHome: newValue } },
       { upsert: true, new: true, setDefaultsOnInsert: true }
     );
@@ -308,9 +312,10 @@ router.patch("/sub-categories/settings/toggle", authMiddleware, async (req, res)
 router.patch("/sub-categories/settings/order", authMiddleware, async (req, res) => {
   try {
     const { category, subCategory, order } = req.body;
-    if (!category || !subCategory) return res.status(400).json({ error: "البيانات مطلوبة" });
+    if (!subCategory) return res.status(400).json({ error: "البيانات مطلوبة" });
+    const effectiveCategory = (category && category.trim()) ? category.trim() : subCategory.trim();
     await SubCategorySettings.findOneAndUpdate(
-      { category, subCategory },
+      { category: effectiveCategory, subCategory },
       { $set: { order: Number(order) || 0 } },
       { upsert: true }
     );
