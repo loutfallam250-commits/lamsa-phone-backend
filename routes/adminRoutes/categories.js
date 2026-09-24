@@ -203,7 +203,10 @@ router.get("/sub-categories/extra", authMiddleware, async (req, res) => {
     }
     const productSubCats = await Product.distinct("subCategory");
     const extra = await SubCategory.find({ name: { $nin: productSubCats.filter(Boolean) } }).lean();
-    _extraCache = extra.map((s) => ({ name: s.name, count: 0, _id: s._id }));
+    // [FIX] Return category: s.name so that extra entries (no products) have a valid
+    // category value. The toggle endpoint keys SubCategorySettings on { category, subCategory }
+    // and sending category: undefined creates a broken document that never matches products.
+    _extraCache = extra.map((s) => ({ name: s.name, category: s.name, count: 0, _id: s._id }));
     _extraCacheTs = Date.now();
     res.json(_extraCache);
   } catch {
